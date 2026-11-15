@@ -1,0 +1,9 @@
+**/bin/
+**/obj/
+.vs/
+.idea/
+local-packages/
+TestOutputs/
+*.nupkg
+*.user
+.env
