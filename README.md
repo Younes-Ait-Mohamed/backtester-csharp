@@ -12,14 +12,13 @@ Supports periodic rebalancing and rebalancing triggered by relative price moveme
 ## Requirements
 
 - .NET 10 SDK.
-- An independently supplied `PricingLibrary` NuGet package, version `2.0.9`.
+- Internet access to restore public NuGet dependencies.
 
-The pricing dependency is not distributed in this repository. Configure an authorized
-NuGet source providing it before restoring. Without this package the solution cannot build.
-For a local package directory:
+`PricingLibrary` version `2.0.9` is bundled in `packages/`. The repository's
+`nuget.config` restores this package locally and public dependencies from NuGet.org.
 
 ```powershell
-dotnet restore Backtester.slnx --source ./local-packages --source https://api.nuget.org/v3/index.json
+dotnet restore Backtester.slnx
 dotnet build Backtester.slnx --configuration Release --no-restore
 ```
 
@@ -36,4 +35,11 @@ asset identifier, date (`MM/dd/yyyy HH:mm:ss`) and price (decimal point).
 Results are a JSON array with `date`, `value`, `deltas`, `deltasStdDev`, `price`,
 `priceStdDev` and `transactionCosts` fields. Transaction costs are currently set to zero.
 
-This repository contains source code only; input datasets and generated results are not included.
+Input datasets and generated results are not included as project files.
+
+## Bundled Dependency
+
+`packages/PricingLibrary.2.0.9.nupkg` is an unchanged third-party binary package
+by Mnacho Echenim. Its original metadata and embedded sample data are preserved.
+The package declares no redistribution license; no license for it is granted by
+this repository. It depends on CsvHelper 33.1.0 and MathNet.Numerics 5.0.0.
